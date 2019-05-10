@@ -20,6 +20,6 @@ app.get('/', function(req, res){
 });
 app.use('/static', express.static(__dirname + '/static'));
 
-http.listen(3000, function(){
+http.listen(process.env.PORT, function(){
     console.log('HTTP server started on port 3000');
 });
