@@ -2,6 +2,15 @@
   "name": "mysportsfeeds",
   "version": "2.0.1",
   "description": "A NodeJS wrapper for the MySportsFeeds Sports Data API (http://www.mysportsfeeds.com/)",
+  "scripts": {
+    "ng": "ng",
+    "start": "node index.js",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "heroku-postbuild": "ng build --prod"
+  },
   "directories": {
     "lib": "./lib"
   },
