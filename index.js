@@ -11,7 +11,7 @@ var latestData;
 data.getData().then((result) => { 
     latestData = result;
     console.log('data got ' + latestData)
-    document.getElementById('message').innerHTML = latestData;
+    document.getElementById('message').innerHTML = "testailu";
 });
 
 
