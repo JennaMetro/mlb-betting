@@ -10,7 +10,7 @@ exports.getData = function() {
             fordate:20190428,
             force:true
         });
-   
+        document.getElementById('message').innerHTML = lengthOfName;
 };
 
 
