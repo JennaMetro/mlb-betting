@@ -1,34 +1,13 @@
 {
-  "name": "mysportsfeeds",
-  "version": "2.0.1",
-  "description": "A NodeJS wrapper for the MySportsFeeds Sports Data API (http://www.mysportsfeeds.com/)",
+  "name": "mlb-betting",
   "scripts": {
     "start": "node index.js"
-  },
-  "directories": {
-    "lib": "./lib"
   },
   "main": "index.js",
   "engines": {
     "node": "9.7.0",
     "npm": "6.4.1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MySportsFeeds/mysportsfeeds-node.git"
-  },
-  "keywords": [
-    "mysportsfeeds",
-    "sports",
-    "data",
-    "api"
-  ],
-  "author": "Brad Barkhouse <brad.barkhouse@mysportsfeeds.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/MySportsFeeds/mysportsfeeds-node/issues"
-  },
-  "homepage": "https://github.com/MySportsFeeds/mysportsfeeds-node#readme",
   "dependencies": {
     "express": "^4.16.4",
     "jsrender": "^1.0.3",
@@ -38,7 +17,9 @@
     "request-promise": "^4.2.1",
     "requirejs": "^2.3.6",
     "socket.io": "^2.2.0",
-    "util": "^0.10.3"
+    "util": "^0.10.3",
+    "growl": ">=1.10.0",
+    "minimatch": ">=3.0.2"
   },
   "devDependencies": {
     "chai": "^3.5.0",
