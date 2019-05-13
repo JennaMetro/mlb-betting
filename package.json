@@ -10,7 +10,7 @@
   },
   "main": "index.js",
   "engines": {
-    "node": "9.9.0",
+    "node": "9.7.0",
     "npm": "6.4.1"
   },
   "repository": {
@@ -37,6 +37,7 @@
     "request": "^2.34",
     "request-promise": "^4.2.1",
     "requirejs": "^2.3.6",
+    "socket.io": "^2.2.0",
     "util": "^0.10.3"
   },
   "devDependencies": {
