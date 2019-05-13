@@ -25,11 +25,11 @@ io.on('connection', function (socket) {
     socket.emit('data', latestData);
 });
 
-// refresh once a day
+// refresh once per hour
 setInterval(function () {
     data.getData().then((result) => {
         latestData = result;
         io.emit('data', result);
         console.log('Last updated: ' + new Date());
     });
-}, 86400000000);
+}, 3600000);
