@@ -32,4 +32,4 @@ setInterval(function () {
         io.emit('data', result);
         console.log('Last updated: ' + new Date());
     });
-}, 86400000);
+}, 86400000000);
