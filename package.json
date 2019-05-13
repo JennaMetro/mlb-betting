@@ -9,9 +9,10 @@
     "lib": "./lib"
   },
   "main": "index.js",
-  "engines": [
-    "node"
-  ],
+  "engines": {
+    "node": "9.9.0",
+    "npm": "6.4.1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MySportsFeeds/mysportsfeeds-node.git"
@@ -30,6 +31,7 @@
   "homepage": "https://github.com/MySportsFeeds/mysportsfeeds-node#readme",
   "dependencies": {
     "express": "^4.16.4",
+    "jsrender": "^1.0.3",
     "mysportsfeeds-node": "^2.0.1",
     "q": "^1.4.1",
     "request": "^2.34",
@@ -41,9 +43,5 @@
     "chai": "^3.5.0",
     "mocha": "^2.4.5",
     "nock": "^8.0.0"
-  },
-  "engines": {
-    "node": "10.15.3",
-    "npm": "6.4.1"
   }
 }

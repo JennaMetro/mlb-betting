@@ -4,9 +4,54 @@
         <title>Socket.IO Example</title>
     </head>
     <body>
+            <script src="./static/test.js"></script>
+            <script src="./index.js"></script>
+
+
 <p>toimi plz {latestData} {{latestData}}</p>
 <p id='message'></p>
-<script src="./static/test.js"></script>
-<script src="index.js"></script>
+
+<button onclick="test()">test</button>
+<button onclick="toimi()">toimi</button>
+<p id='msg'></p>
+
+<script id="gameTemplate" type="text/x-jsrender">
+    <div class="game">
+        <div>
+            {{:game.awayTeam.City}} {{:game.awayTeam.Name}} at {{:game.homeTeam.City}} {{:game.homeTeam.Name}}
+        </div>
+        <div>
+            {{if isUnplayed == "true" }}
+             
+            Game starts at {{:game.time}}
+             
+            {{else isCompleted == "false"}}
+             
+            <div>Current Score: {{:awayScore}} - {{:homeScore}}</div>
+             
+            <div>
+                {{if currentIntermission}}
+                    {{:~ordinal_suffix_of(currentIntermission)}} Intermission
+                {{else currentPeriod}}
+                    {{:~ordinal_suffix_of(currentPeriod)}}<br/>
+                    {{:~time_left(currentPeriodSecondsRemaining)}}
+                {{else}}
+                    1st
+                {{/if}}
+            </div>
+             
+            {{else}}
+             
+            Final Score: {{:awayScore}} - {{:homeScore}}
+             
+            {{/if}}
+        </div>
+    </div>
+    </script>
+
+
+
+
+
 </body>
 </html>
