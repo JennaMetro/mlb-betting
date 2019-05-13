@@ -1,6 +1,6 @@
 var MySportsFeeds = require("mysportsfeeds-node"); 
 var msf = new MySportsFeeds("1.2", true);
-msf.authenticate(API_KEY, PASSWORD);
+msf.authenticate(process.env.API_KEY, process.env.PASSWORD);
  
 var today = new Date();
 
