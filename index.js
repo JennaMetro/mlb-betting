@@ -18,7 +18,7 @@ app.use(express.static(__dirname));
 
 
 
-http.listen(4400 || process.env.PORT, function () {
+http.listen( process.env.PORT || 4400, function () {
     console.log('HTTP server started on port 4000');
 });
 io.on('connection', function (socket) {
