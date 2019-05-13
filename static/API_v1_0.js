@@ -63,7 +63,7 @@ function __saveFeed(response, league, season, feed, format, params) {
 
   if ( this.storeType == "file" ) {
     if ( !fs.existsSync(this.storeLocation) ) {
-      fs.mkdir(this.storeLocation);
+      fs.mkdirSync(this.storeLocation);
     }
 
     var filename = __makeOutputFilename.call(this, league, season, feed, format, params);
