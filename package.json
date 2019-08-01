@@ -19,7 +19,9 @@
     "socket.io": "^2.2.0",
     "util": "^0.10.3",
     "growl": ">=1.10.0",
-    "minimatch": ">=3.0.2"
+    "minimatch": ">=3.0.2",
+    "@tensorflow/tfjs": "^0.13.0",
+    "@tensorflow/tfjs-node": "^0.1.21"
   },
   "devDependencies": {
     "chai": "^3.5.0",

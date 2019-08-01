@@ -4,7 +4,7 @@ var rp = require('request-promise');
 var fs = require('fs');
 var util = require('util');
 var libVersion = require('../package.json').version;
-
+var filename = "";
 // Private Functions
 function __getBaseUrl(league, feed, format, params) {
   return this.baseUrl + '/' + league + '/' + feed + '.' + format;
@@ -66,7 +66,7 @@ function __saveFeed(response, league, season, feed, format, params) {
       fs.mkdirSync(this.storeLocation);
     }
 
-    var filename = __makeOutputFilename.call(this, league, season, feed, format, params);
+    filename = __makeOutputFilename.call(this, league, season, feed, format, params);
 
     if ( format == "json" ) {  // This is JSON
       fs.writeFileSync(this.storeLocation + filename, JSON.stringify(storeOutput));
