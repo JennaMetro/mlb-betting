@@ -1,8 +1,6 @@
 var myModule = require('./API_v1_0.js');
 
-// name is a member of myModule due to the export above
-
-var daysGameFilename = "";
+var teamStats = "";
 var scoreboardInformation ="";
 var today = new Date();
 var i = 0;
@@ -12,11 +10,14 @@ var fordate = today.getFullYear() +
 ('0' + today.getDate()).slice(-2)
 
 
-daysGameFilename = "seasonal_team_stats-mlb-2019-regular-" + fordate + ".json"
+teamStats = "seasonal_team_stats-mlb-2019-regular-" + fordate + ".json"
 scoreboardInformation = "scoreboard-mlb-2019-regular-" + fordate + ".json"
-var games = require('../results/'+ daysGameFilename);
-var teamsPlaying = require('../results/'+ scoreboardInformation);
+var teamStatsObject = require('../results/'+ teamStats);
+//var teamsPlaying = require('../results/'+ scoreboardInformation);
 exports.getTodaysJsonData = async function() {
+  var temp = Object.values(teamStatsObject);
+  var ArrayOfTeamStats = temp[1];
+
 //var games = require('../results/'+ daysGameFilename);
 //var teamsPlaying = require('../results/'+ scoreboardInformation);
     //console.log(games);
@@ -27,17 +28,9 @@ exports.getTodaysJsonData = async function() {
 
 
 exports.testing = function() { 
+
     //console.log("JOUUUUUU "+ daysGameFilename);
     //console.log("JOUUUUUU "+ teamsPlaying);
     //var teamsPlayingJson = JSON.parse(teamsPlaying);
-
-   for (var scoreboard in teamsPlaying){
-    for (var match in scoreboard){
-      for (var match2 in match){
-     i++;
-     gameArray[i]= match2.;
-
-     }  }};
-
-   console.log("fjfsifjosjfoi   " + gameArray[0])
+    console.log(ArrayOfTeamStats);
 }

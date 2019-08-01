@@ -51,8 +51,8 @@ model.compile({
 
 async function train_data(){
     console.log('......Loss History.......');
-    for(let i=0;i<40;i++){
-     let res = await model.fit(trainingData, outputData, {epochs: 40});
+    for(let i=0;i<4;i++){
+     let res = await model.fit(trainingData, outputData, {epochs: 4});
      console.log(`Iteration ${i}: ${res.history.loss[0]}`);
   }
 }
