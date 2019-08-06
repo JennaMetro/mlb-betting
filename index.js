@@ -5,7 +5,7 @@ var app = express();
 var http = require('http').Server(app);
 var data = require('./static/test');
 var model = require('./static/model')
-//var daysGames = require('./static/dataSetup')
+var daysGames = require('./static/dataSetup')
 var io = require('socket.io')(http);
 
 var latestData;
@@ -18,7 +18,7 @@ data.getStatsForToday().then((result) => {
     todaysStats = result;
 });
 
-//daysGames.getTodaysJsonData();
+daysGames.getTodaysJsonData();
 model.createModel();
 
 app.get('/', function (req, res) {
