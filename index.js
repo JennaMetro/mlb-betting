@@ -9,7 +9,7 @@ var daysGames = require('./static/dataSetup')
 var io = require('socket.io')(http);
 
 var latestData;
-
+ 
 data.getData().then((result) => {
     latestData = result;
 });
@@ -27,8 +27,6 @@ app.get('/', function (req, res) {
 app.use('/static', express.static(__dirname + '/static'));
 app.use(express.static(__dirname));
 
-
-//daysGames.testing();
 http.listen( process.env.PORT || 4400, function () {
     console.log('HTTP server started on port 4000');
 });

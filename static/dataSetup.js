@@ -1,12 +1,13 @@
 var myModule = require('./API_v1_0.js');
-
+const fs = require('fs');
 var teamStatsString = "";
 var scoreboardInformation ="";
 var today = new Date();
-var gameStatsJson = [];
+var gameStatsJson = {};
 var teams = [];
 var tempAway = {}
 var tempHome = {}
+//const path = `../daysGameData.json`;
 
 var fordate = today.getFullYear() + 
 ('0' + parseInt(today.getMonth() + 1)).slice(-2) + 
@@ -24,8 +25,9 @@ var teamsPlaying = require('../results/'+ scoreboardInformation);
   var tempteams  = Object.values(arrayOfTeamStats)
   var arrayOfTeamsPlaying = teamsPlayingTemp[0].gameScore;
 
+// create data for all the teams
 arrayOfTeamStats.forEach(team => {
-var teamStats = {};
+var teamStats ={};
 teamStats["ID"] = team.team.id;
 teamStats["battingAvg"] = team.stats.batting.battingAvg;
 teamStats["batterOnBasePct"] = team.stats.batting.batterOnBasePct;
@@ -41,20 +43,49 @@ arrayOfTeamsPlaying.forEach(game => {
  
   for(var i=0; i<=teams.length-1; i++){
 if (teams[i].ID == game.game.homeTeam.ID){
-  homeTeam = teams[i];
+ var homeTeam = teams[i];
 }
     if (teams[i].ID == game.game.awayTeam.ID){
-      awayTeam = teams[i];
+     var awayTeam = teams[i];
 }
-  
 }
+
+//Create json for todays team
+var tempMatch = {
+
+battingAvg: homeTeam.battingAvg,
+batterOnBasePct: homeTeam.batterOnBasePct,
+batterSluggingPct: homeTeam.batterSluggingPct,
+earnedRunAvg:homeTeam.earnedRunAvg,
+pitchingAvg:homeTeam.pitchingAvg,
+strikeoutsPer9Innings:homeTeam.strikeoutsPer9Innings,
+hitsAllowedPer9Innings: homeTeam.hitsAllowedPer9Innings,
+AbattingAvg:awayTeam.battingAvg,
+AbatterOnBasePct:awayTeam.batterOnBasePct,
+AbatterSluggingPct: awayTeam.batterSluggingPct,
+AearnedRunAvg: awayTeam.earnedRunAvg,
+ApitchingAvg:awayTeam.pitchingAvg,
+AstrikeoutsPer9Innings: awayTeam.strikeoutsPer9Innings,
+AhitsAllowedPer9Innings:awayTeam.hitsAllowedPer9Innings
+};
+gameStatsJson.push(tempMatch)
+
+//var tempMatch ={"battingAvg: " + homeTeam.battingAvg + ", batterOnBasePct: " + homeTeam.batterOnBasePct + ", batterSluggingPct: " + homeTeam.batterSluggingPct + ", earnedRunAvg: " + homeTeam.earnedRunAvg + ", pitchingAvg: " + homeTeam.pitchingAvg + ", strikeoutsPer9Innings: " + homeTeam.strikeoutsPer9Innings + ", hitsAllowedPer9Innings: " + homeTeam.hitsAllowedPer9Innings + "AbattingAvg: "+ awayTeam.battingAvg + ", AbatterOnBasePct: " + awayTeam.batterOnBasePct + ", AbatterSluggingPct: " + awayTeam.batterSluggingPct + ", AearnedRunAvg: " + awayTeam.earnedRunAvg + ", ApitchingAvg: " + awayTeam.pitchingAvg + ", AstrikeoutsPer9Innings: " + awayTeam.strikeoutsPer9Innings + ", AhitsAllowedPer9Innings: " + awayTeam.hitsAllowedPer9Innings};
+
 //build testing.json
-gameStatsJson.push("{ battingAvg: "+ homeTeam.battingAvg + ", batterOnBasePct: " + homeTeam.batterOnBasePct + ", batterSluggingPct: " + homeTeam.batterSluggingPct + ", earnedRunAvg: " + homeTeam.earnedRunAvg + ", pitchingAvg: " + homeTeam.pitchingAvg + ", strikeoutsPer9Innings: " + homeTeam.strikeoutsPer9Innings + ", hitsAllowedPer9Innings: " + homeTeam.hitsAllowedPer9Innings + "AbattingAvg: "+ awayTeam.battingAvg + ", AbatterOnBasePct: " + awayTeam.batterOnBasePct + ", AbatterSluggingPct: " + awayTeam.batterSluggingPct + ", AearnedRunAvg: " + awayTeam.earnedRunAvg + ", ApitchingAvg: " + awayTeam.pitchingAvg + ", AstrikeoutsPer9Innings: " + awayTeam.strikeoutsPer9Innings + ", AhitsAllowedPer9Innings: " + awayTeam.hitsAllowedPer9Innings + "}");
+//gameStatsJson.push("\"{battingAvg: \"" + homeTeam.battingAvg + ", batterOnBasePct: " + homeTeam.batterOnBasePct + ", batterSluggingPct: " + homeTeam.batterSluggingPct + ", earnedRunAvg: " + homeTeam.earnedRunAvg + ", pitchingAvg: " + homeTeam.pitchingAvg + ", strikeoutsPer9Innings: " + homeTeam.strikeoutsPer9Innings + ", hitsAllowedPer9Innings: " + homeTeam.hitsAllowedPer9Innings + "AbattingAvg: "+ awayTeam.battingAvg + ", AbatterOnBasePct: " + awayTeam.batterOnBasePct + ", AbatterSluggingPct: " + awayTeam.batterSluggingPct + ", AearnedRunAvg: " + awayTeam.earnedRunAvg + ", ApitchingAvg: " + awayTeam.pitchingAvg + ", AstrikeoutsPer9Innings: " + awayTeam.strikeoutsPer9Innings + ", AhitsAllowedPer9Innings: " + awayTeam.hitsAllowedPer9Innings + "}");
   //const getFruit = teams.find(team => team.ID === game.game.homeTeam.ID);
  // let resultObject = search(game.game.homeTeam.ID, teams);
  
   })
-  console.log(gameStatsJson)
+  var callback = "weerro";
+ //create Json
+//var jsonContent = JSON.stringify(gameStatsJson);
+//fs.writeFile('daysGameData.json', json, 'utf8', callback);
+fs.writeFileSync('daysGameData.json', JSON.stringify(gameStatsJson))
+
+
+
   // gameStatsJson
     //for(var i=0; i<=arrayOfTeamsPlaying.length-1; i++){
       //console.log(game.game.homeTeam.ID = arrayOfTeamStats[i].team.id)
