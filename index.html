@@ -6,23 +6,34 @@
 </head>
 
 <body>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>
     <script src="./static/test.js"></script>
+    <script src="./static/model.js"></script>
     <script src="./index.js"></script>
     <header>Mlb scores</header>
     <div id="data">
 
     </div>
+    <div> 
+        
+            <h4>Result:</h4>
+            <h1><%= test %></h1>
+              <button type="button" id="predictButton">Predccict</button>
+           
+             <p id="output"></p>
+             <p id="test"></p>
+              </div>
 
     <script id="gameTemplate" type="text/x-jsrender">
         <div class="game">
         <div>
-            {{:game.awayTeam.City}} {{:game.awayTeam.Name}} at {{:game.homeTeam.City}} {{:game.homeTeam.Name}}
+            {{:game.awayTeam.City}} {{:game.awayTeam.Name}} at {{:game.homeTeam.City}} {{:game.homeTeam.Name}} 
         </div>
         <div>
             {{if isUnplayed == "true" }}
              
             Game starts at {{:game.time}}
-             
+            {{:game.winningPercentage}}
             {{else isCompleted == "false"}}
              
             <div>Current Score: {{:awayScore}} - {{:homeScore}}</div>
@@ -46,6 +57,8 @@
         </div>
     </div>
     </script>
+
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jsrender/0.9.90/jsrender.min.js"></script>
@@ -79,12 +92,27 @@
         var tmpl = $.templates("#gameTemplate");
 
         socket.on('data', function (data) {
-            console.log(data);
+            console.log(" ffff ! " + data);
 
             $('#data').html(tmpl.render(data.scoreboard.gameScore, helpers));
         });
     </script>
+    <script type='text/javascript'>
+        var rows =<%-JSON.stringify(data)%>
+      </script>
 
+     <script>
+document.getElementById("predictButton").addEventListener("click", function(){
+  document.getElementById("test").innerHTML = JSON.stringify(test);
+});
+
+
+    document.getElementById("predictButton").addEventListener("click", function(){
+        
+        document.getElementById("output").innerHTML = testing;
+              document.getElementById("test").innerHTML = "fsfsfsfsfs";
+              });
+            </script>
     <style>
         .game {
             border: 1px solid #000;
