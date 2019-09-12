@@ -11,34 +11,26 @@ var io = require('socket.io')(http);
 var latestData;
 var newestData;
 
-
-
-
-
 const getInfo = async () => {
   await data.getData().then((result) => {
         latestData = result;
-       // console.log(latestData)
     });
     
   await  data.getStatsForToday().then((result) => {
         todaysStats = result;
     });
-    await daysGames.getTodaysJsonData();
-    
-    
+    await daysGames.getTodaysJsonData();      
    }
    
-   const fuvk = async () => {
+   const modelCreating = async () => {
     await model.createModel().then((result) => {
        newestData = result;
-       
-   console.log(newestData);
     });
 }
 
    getInfo();
-   fuvk();
+   modelCreating();
+
    const website = async () => {
     app.set('view engine', 'ejs');
     app.engine('html', require('ejs').renderFile); 
@@ -59,9 +51,6 @@ const getInfo = async () => {
    }
    website();
 
-
-
-
 // refresh once per hour
 setInterval(function () {
     data.getData().then((result) => {
@@ -70,12 +59,3 @@ setInterval(function () {
         console.log('Last updated: ' + new Date());
     });
 }, 3600000);
-
-/* 
-
-
-document.getElementById("predictButton").addEventListener("click", function(){
-        
-    document.getElementById("output").innerHTML = returnResults();
-          });
- */

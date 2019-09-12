@@ -10,19 +10,11 @@
     <script src="./static/test.js"></script>
     <script src="./static/model.js"></script>
     <script src="./index.js"></script>
+    <link rel="stylesheet" href="styles.css">
     <header>Mlb scores</header>
     <div id="data">
 
     </div>
-    <div> 
-        
-            <h4>Result:</h4>
-            <h1><%= test %></h1>
-              <button type="button" id="predictButton">Predccict</button>
-           
-             <p id="output"></p>
-             <p id="test"></p>
-              </div>
 
     <script id="gameTemplate" type="text/x-jsrender">
         <div class="game">
@@ -33,7 +25,7 @@
             {{if isUnplayed == "true" }}
              
             Game starts at {{:game.time}}
-            {{:game.winningPercentage}}
+            <div>Hometeam {{:game.homeTeam.City}} has the winning percentage of {{:game.winningPercentage}}% </div>
             {{else isCompleted == "false"}}
              
             <div>Current Score: {{:awayScore}} - {{:homeScore}}</div>
@@ -98,30 +90,21 @@
         });
     </script>
     <script type='text/javascript'>
-        var rows =<%-JSON.stringify(data)%>
-      </script>
+        var rows =<% -JSON.stringify(data) %>
+    </script>
 
-     <script>
-document.getElementById("predictButton").addEventListener("click", function(){
-  document.getElementById("test").innerHTML = JSON.stringify(test);
-});
+    <script>
+            document.getElementById("predictButton").addEventListener("click", function () {
+                document.getElementById("test").innerHTML = JSON.stringify(test);
+            });
 
 
-    document.getElementById("predictButton").addEventListener("click", function(){
-        
-        document.getElementById("output").innerHTML = testing;
-              document.getElementById("test").innerHTML = "fsfsfsfsfs";
-              });
-            </script>
-    <style>
-        .game {
-            border: 1px solid #000;
-            float: left;
-            margin: 1%;
-            padding: 1em;
-            width: 25%;
-        }
-    </style>
+        document.getElementById("predictButton").addEventListener("click", function () {
+
+            document.getElementById("output").innerHTML = testing;
+            document.getElementById("test").innerHTML = "fsfsfsfsfs";
+        });
+    </script>
 </body>
 
 </html>
