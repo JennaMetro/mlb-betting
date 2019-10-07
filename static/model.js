@@ -3,19 +3,17 @@ require('@tensorflow/tfjs-node');
 const iris = require('./boston.json');
 const fs = require('fs');
 //const irisTesting = require('./test.json');
-const irisTesting = require('./daysGameData.json');
-var results = "jgjgjgjg";
+const irisTesting = require('../daysGameData.json');
+var results = "";
 var today = new Date();
 var homeWinningPercentage = [];
 var i = 0;
-var fordate = today.getFullYear() +
-    ('0' + parseInt(today.getMonth() + 1)).slice(-2) +
-    ('0' + today.getDate()).slice(-2)
+var fordate = '20190919'
 
 // Mapping the trainingdata
 const trainingData = tf.tensor2d(iris.map(match => [
     match.battingAvg, match.batterOnBasePct, match.batterSluggingPct, match.earnedRunAvg, match.pitchingAvg, match.strikeoutsPer9Innings, match.hitsAllowedPer9Innings, match.AbattingAvg, match.AbatterOnBasePct, match.AbatterSluggingPct, match.AearnedRunAvg, match.ApitchingAvg, match.AstrikeoutsPer9Innings, match.AhitsAllowedPer9Innings
-]), [80, 14])
+]), [ 293, 14])
 
 // Mapping the testing data
 const testingData = tf.tensor2d(irisTesting.map(match => [
@@ -27,7 +25,7 @@ const outputData = tf.tensor2d(iris.map(match => [
     match.Hwin === 'W' ? 1 : 0,
     match.Hwin === 'L' ? 1 : 0,
 
-]), [80, 2])
+]), [293, 2])
 
 // Creating Model
 const model = tf.sequential();
@@ -59,8 +57,8 @@ model.compile({
 
 async function train_data() {
     console.log('......Loss History.......');
-    for (let i = 0; i < 4; i++) {
-        let res = await model.fit(trainingData, outputData, { epochs: 4 });
+    for (let i = 0; i < 40; i++) {
+        let res = await model.fit(trainingData, outputData, { epochs: 40});
         console.log(`Iteration ${i}: ${res.history.loss[0]}`);
     }
 }

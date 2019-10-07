@@ -3,12 +3,10 @@ const fs = require('fs');
 var teamStatsString = "";
 var scoreboardInformation = "";
 var today = new Date();
-var gameStatsJson = {};
+var gameStatsJson = [];
 var teams = [];
 
-var fordate = today.getFullYear() +
-  ('0' + parseInt(today.getMonth() + 1)).slice(-2) +
-  ('0' + today.getDate()).slice(-2)
+var fordate = '20190919'
 exports.getTodaysJsonData = async function () {
 
   teamStatsString = "seasonal_team_stats-mlb-2019-regular-" + fordate + ".json"
@@ -64,10 +62,17 @@ exports.getTodaysJsonData = async function () {
       ApitchingAvg: awayTeam.pitchingAvg,
       AstrikeoutsPer9Innings: awayTeam.strikeoutsPer9Innings,
       AhitsAllowedPer9Innings: awayTeam.hitsAllowedPer9Innings
-    };
-    gameStatsJson.push(tempMatch)
-
+    }
+ gameStatsJson.push(tempMatch)
+   
   })
 
-  fs.writeFileSync('daysGameData.json', JSON.stringify(gameStatsJson))
+ 
+  fs.writeFileSync('daysGameData.json', JSON.stringify(gameStatsJson),)
+ 
 }
+
+/* 
+var fordate = today.getFullYear() +
+  ('0' + parseInt(today.getMonth() + 1)).slice(-2) +
+  ('0' + today.getDate()).slice(-2) */

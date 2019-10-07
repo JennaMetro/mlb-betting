@@ -5,7 +5,7 @@ var ejs = require('ejs');
 var app = express();
 var http = require('http').Server(app);
 var data = require('./static/test');
-var model = require('./static/model')
+
 var daysGames = require('./static/dataSetup')
 var io = require('socket.io')(http);
 var latestData;
@@ -21,14 +21,14 @@ const getInfo = async () => {
     });
     await daysGames.getTodaysJsonData();      
    }
-   
+   getInfo();
+
    const modelCreating = async () => {
+    var model = require('./static/model')
     await model.createModel().then((result) => {
        newestData = result;
     });
 }
-
-   getInfo();
    modelCreating();
 
    const website = async () => {

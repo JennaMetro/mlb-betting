@@ -5,21 +5,21 @@ var msf2 = new MySportsFeeds("2.0", true);
 msf.authenticate("2685560e-b0e8-4e7a-b549-4ac6f8", "Mummeli6");
 msf2.authenticate("2685560e-b0e8-4e7a-b549-4ac6f8", "MYSPORTSFEEDS");
 var today = new Date();
+var fordate = '20190919' //if no games are played
 exports.getData = async function () {
     return msf.getData('mlb', '2019-regular', 'scoreboard', 'json', {
-        fordate: today.getFullYear() +
-            ('0' + parseInt(today.getMonth() + 1)).slice(-2) +
-            ('0' + today.getDate()).slice(-2),
+        fordate:fordate,
         force: true
     })
 }
 exports.getStatsForToday = async function () {
     return msf2.getData('mlb', '2019-regular', 'seasonal_team_stats', 'json', {
-        fordate: today.getFullYear() +
-            ('0' + parseInt(today.getMonth() + 1)).slice(-2) +
-            ('0' + today.getDate()).slice(-2),
+        fordate:fordate,
         force: true
     });
+  fordate: '20190905'
 }
 
-
+/* fordate: today.getFullYear() +
+('0' + parseInt(today.getMonth())).slice(-2) +
+('0' + today.getDate()).slice(-2), */
