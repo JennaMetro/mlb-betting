@@ -8,12 +8,12 @@ var results = "";
 var today = new Date();
 var homeWinningPercentage = [];
 var i = 0;
-var fordate = '20190919'
+var fordate = '20190619'
 
 // Mapping the trainingdata
 const trainingData = tf.tensor2d(iris.map(match => [
     match.battingAvg, match.batterOnBasePct, match.batterSluggingPct, match.earnedRunAvg, match.pitchingAvg, match.strikeoutsPer9Innings, match.hitsAllowedPer9Innings, match.AbattingAvg, match.AbatterOnBasePct, match.AbatterSluggingPct, match.AearnedRunAvg, match.ApitchingAvg, match.AstrikeoutsPer9Innings, match.AhitsAllowedPer9Innings
-]), [ 293, 14])
+]), [ 394, 14])
 
 // Mapping the testing data
 const testingData = tf.tensor2d(irisTesting.map(match => [
@@ -25,7 +25,7 @@ const outputData = tf.tensor2d(iris.map(match => [
     match.Hwin === 'W' ? 1 : 0,
     match.Hwin === 'L' ? 1 : 0,
 
-]), [293, 2])
+]), [394, 2])
 
 // Creating Model
 const model = tf.sequential();
@@ -35,10 +35,12 @@ model.add(tf.layers.dense(
     {
         inputShape: 14,
         activation: 'sigmoid',
-        units: 10
+        units: 100
     }
 ));
-
+model.add(tf.layers.dense({units: 175, activation: 'relu'}));
+model.add(tf.layers.dense({units: 100, activation: 'relu'}));
+//model.add(tf.layers.dense({units: 50, activation: 'relu'}));
 model.add(tf.layers.dense(
     {
         inputShape: 10,
