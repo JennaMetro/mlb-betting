@@ -6,7 +6,7 @@ var today = new Date();
 var gameStatsJson = [];
 var teams = [];
 
-var fordate = '20190619'
+var fordate = '20190807'
 exports.getTodaysJsonData = async function () {
 
   teamStatsString = "seasonal_team_stats-mlb-2019-regular-" + fordate + ".json"

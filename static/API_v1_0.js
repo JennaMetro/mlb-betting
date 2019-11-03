@@ -34,15 +34,21 @@ function __verifyFormat(format) {
 }
 
 function __makeOutputFilename(league, season, feed, format, params) {
+  console.log(Object.keys(params));
   var filename = feed + '-' + league + '-' + season;
+ 
 
+  if ( Object.keys(params).includes("date")) {
+    filename += "-" + params["date"];
+  }
   if ( Object.keys(params).includes("gameid") ) {
     filename += "-" + params["gameid"];
   }
 
-  if ( Object.keys(params).includes("fordate") ) {
+  if ( Object.keys(params).includes("fordate")  ) {
     filename += "-" + params["fordate"];
   }
+
 
   filename += "." + format;
 
