@@ -14,7 +14,7 @@
     "ejs": "^2.6.2",
     "express": "^4.16.4",
     "growl": ">=1.10.0",
-    "jsdom": "^15.1.1",
+    "jsdom": "^16.5.0",
     "jsrender": "^1.0.3",
     "minimatch": ">=3.0.2",
     "mysportsfeeds-node": "^2.0.1",
