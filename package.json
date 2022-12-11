@@ -12,7 +12,7 @@
     "@tensorflow/tfjs": "^0.13.0",
     "@tensorflow/tfjs-node": "^0.1.21",
     "ejs": "^2.6.2",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "growl": ">=1.10.0",
     "jsdom": "^15.1.1",
     "jsrender": "^1.0.3",
